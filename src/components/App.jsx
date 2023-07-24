@@ -1,16 +1,26 @@
-export const App = () => {
-  return (
-    <div
-      style={{
-        height: '100vh',
-        display: 'flex',
-        justifyContent: 'center',
-        alignItems: 'center',
-        fontSize: 40,
-        color: '#010101'
-      }}
-    >
-      React homework template
-    </div>
-  );
-};
+import React, { Component } from "react";
+
+import { Section } from 'components/Section/Section';
+import { Phonebook } from 'components/Phonebook/Phonebook';
+import { Contacts } from 'components/Contacts/Contacts';
+
+
+export class App extends Component {
+  state = {
+    contacts: [],
+    name: ''
+  }
+
+  render() {
+    return (
+      <div className="App">
+        <Section title="Phonebook">
+          <Phonebook/>
+        </Section>
+        <Section title="Contacts">
+          <Contacts/>
+        </Section>
+      </div>
+    )
+  }
+}
