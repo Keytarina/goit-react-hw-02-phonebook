@@ -8,7 +8,7 @@ import { Contacts } from 'components/Contacts/Contacts';
 export class App extends Component {
   state = {
     contacts: [],
-    name: ''
+    filter: ''
   }
 
   render() {
