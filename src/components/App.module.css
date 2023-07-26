@@ -1,3 +1,10 @@
+.App {
+    display: block;
+    width: 320px;
+    margin: 0 auto;
+    padding: 20px 10px 20px;
+    font-size: 20px;
+}
 .section {
     padding: 20px 20px;
     margin-bottom: 20px;

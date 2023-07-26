@@ -1,44 +1,37 @@
 import React, { Component } from "react";
 
-import { Section } from 'components/Section/Section';
-import { Phonebook } from 'components/Phonebook/Phonebook';
-import { Contacts } from 'components/Contacts/Contacts';
+import css from 'components/App.module.css';
 
+import { ContactForm } from 'components/ContactForm/ContactForm';
+import { Filter } from 'components/Filter/Filter';
+import { ContactList } from 'components/ContactList/ContactList';
 
 export class App extends Component {
   state = {
-    name: '',
-    number: '',
-    // contacts: [],
-    // filter: ''
+    contacts: [
+      {id: 'id-1', name: 'Rosie Simpson', number: '459-12-56'},
+      {id: 'id-2', name: 'Hermione Kline', number: '443-89-12'},
+      {id: 'id-3', name: 'Eden Clements', number: '645-17-79'},
+      {id: 'id-4', name: 'Annie Copeland', number: '227-91-26'},
+    ],
+    filter: '',
   }
 
-  handleChange = event => {
-    this.setState({[event.target.name]: event.target.value});
-    console.log(this.state);
+  formSubmitHandle = (data) => {
+    const { contacts } = this.state;
+    console.log(data);
   }
 
-  handleSubmit = event => {
-    event.preventDefault();
-    // Проп, який передається формі для виклику під час сабміту
-    this.props.onSubmit({ ...this.state });
-  }
 
   render() {
-    const { name } = this.state.name;
-    const { number } = this.state.number;
     return (
       <div className="App">
-        <Section title="Phonebook">
-          <Phonebook 
-          handleChange={this.handleChange}
-          handleSubmit={this.handleSubmit} 
-          name={name} 
-          number={number}/>
-        </Section>
-        <Section title="Contacts">
-          <Contacts/>
-        </Section>
+        <h1 className={css.title}>Phonebook</h1>
+        <ContactForm onSubmit={this.formSubmitHandle} />
+
+        <h2>Contacts</h2>
+        <Filter/>
+        <ContactList/>
       </div>
     )
   }
