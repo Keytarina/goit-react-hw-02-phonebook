@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { nanoid } from 'nanoid'
 
 import css from 'components/App.module.css';
 
@@ -19,19 +20,30 @@ export class App extends Component {
 
   formSubmitHandle = (data) => {
     const { contacts } = this.state;
-    console.log(data);
+    this.setState({
+      contacts: [  ...contacts,
+        { 
+          id: nanoid(10),
+          name: data.name,
+          number: data.number
+        }
+      ]});
   }
 
+  handleChangeFilter = event => {
+    const { name, value } = event.currentTarget;
+    this.setState({ [name]: value });
+  }
 
   render() {
     return (
       <div className="App">
         <h1 className={css.title}>Phonebook</h1>
         <ContactForm onSubmit={this.formSubmitHandle} />
-
+        {console.log(this.state)}
         <h2>Contacts</h2>
-        <Filter/>
-        <ContactList/>
+        <Filter value={this.filter} handleChange={this.handleChangeFilter}/>
+        <ContactList contacts={this.state.contacts}/>
       </div>
     )
   }

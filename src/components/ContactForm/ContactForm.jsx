@@ -9,7 +9,6 @@ export class ContactForm extends Component {
 	// Метод оновлення полів input
 	handleChange = event => {
 		this.setState({[event.target.name]: event.target.value});
-		console.log(this.state);
 	  }
 	
 	  handleSubmit = event => {
@@ -48,7 +47,6 @@ export class ContactForm extends Component {
 				  </label>
 				<button type="submit">Add contact</button>
 			</form>
-			);
-	}
-	
+		);
+	}	
 }
