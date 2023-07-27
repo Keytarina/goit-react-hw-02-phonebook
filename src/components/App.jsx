@@ -33,6 +33,7 @@ export class App extends Component {
   handleChangeFilter = event => {
     const { name, value } = event.currentTarget;
     this.setState({ [name]: value });
+    console.log(this.state);
   }
 
   render() {
@@ -42,7 +43,7 @@ export class App extends Component {
         <ContactForm onSubmit={this.formSubmitHandle} />
         {console.log(this.state)}
         <h2>Contacts</h2>
-        <Filter value={this.filter} handleChange={this.handleChangeFilter}/>
+        <Filter value={this.state.filter} handleChange={this.handleChangeFilter}/>
         <ContactList contacts={this.state.contacts}/>
       </div>
     )

@@ -3,7 +3,7 @@ import css from './Filter.module.css';
 
 export const Filter = ({ value, handleChange}) => {
 	return (
-		<label className='label'>
+		<label className={css.label}>
 			Find contacts by name
 			<input 
 			type="text" 
@@ -15,6 +15,6 @@ export const Filter = ({ value, handleChange}) => {
 }
 
 Filter.propTypes = {
-	value: PropTypes.string,
-	handleChange: PropTypes.func,
+	value: PropTypes.string.isRequired,
+	handleChange: PropTypes.func.isRequired,
 };
