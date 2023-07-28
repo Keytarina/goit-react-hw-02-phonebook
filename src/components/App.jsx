@@ -33,10 +33,22 @@ export class App extends Component {
   handleChangeFilter = event => {
     const { name, value } = event.currentTarget;
     this.setState({ [name]: value });
-    console.log(this.state);
+  }
+
+  filtredСontacts = () => {
+    const { filter, contacts } = this.state;
+    if(filter === '') {
+      return contacts;
+    } else {
+      contacts.filter((contact) => {
+        return contact.name;
+      });
+    }
   }
 
   render() {
+    const filterdContacts = this.filtredСontacts();
+    console.log(filterdContacts);
     return (
       <div className="App">
         <h1 className={css.title}>Phonebook</h1>
@@ -44,7 +56,7 @@ export class App extends Component {
         {console.log(this.state)}
         <h2>Contacts</h2>
         <Filter value={this.state.filter} handleChange={this.handleChangeFilter}/>
-        <ContactList contacts={this.state.contacts}/>
+        <ContactList contacts={filterdContacts}/>
       </div>
     )
   }

@@ -8,15 +8,15 @@ export class ContactForm extends Component {
 	}
 	// Метод оновлення полів input
 	handleChange = event => {
-		this.setState({[event.target.name]: event.target.value});
-	  }
-	
-	  handleSubmit = event => {
+		this.setState({[event.currentTarget.name]: event.currentTarget.value});
+	}
+	// Надсилання форми
+	handleSubmit = event => {
 		event.preventDefault();
 		this.props.onSubmit(this.state);
 		// Скидання форми
 		this.setState({ name: '', number: '' });
-	  }
+	}
 
 	render() {
 		return (
