@@ -20,6 +20,10 @@ export class App extends Component {
 
   formSubmitHandle = (data) => {
     const { contacts } = this.state;
+    if (contacts.some(contact => contact.name === data.name)) {
+      alert(`${data.name} is already in contacts.`);
+      return;
+    }
     this.setState({
       contacts: [  ...contacts,
         { 
@@ -37,26 +41,27 @@ export class App extends Component {
 
   filtredСontacts = () => {
     const { filter, contacts } = this.state;
-    if(filter === '') {
+    if(filter === ''){
       return contacts;
     } else {
-      contacts.filter((contact) => {
-        return contact.name;
-      });
+      return contacts.filter(contact => {
+        contact.name.toLowerCase().includes(filter.toLowerCase());
+    });
     }
   }
 
+  onDeleteContact = () => {
+    console.log("Function delete contact");
+  }
+
   render() {
-    const filterdContacts = this.filtredСontacts();
-    console.log(filterdContacts);
     return (
       <div className="App">
         <h1 className={css.title}>Phonebook</h1>
         <ContactForm onSubmit={this.formSubmitHandle} />
-        {console.log(this.state)}
         <h2>Contacts</h2>
         <Filter value={this.state.filter} handleChange={this.handleChangeFilter}/>
-        <ContactList contacts={filterdContacts}/>
+        <ContactList filtredСontacts={this.filtredСontacts()} onDeleteContact={this.onDeleteContact}/>
       </div>
     )
   }

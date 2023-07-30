@@ -1,23 +1,24 @@
 import PropTypes from 'prop-types';
 import css from './ContactList.module.css';
-import ContactListItem from 'components/ContactListItem/ContactListItem'
+import { ContactListItem } from 'components/ContactListItem/ContactListItem'
 
-export const ContactList = ({ contacts }) => {
+export const ContactList = ({ filtredСontacts, onDeleteContact }) => {
 	return (
 		<ul>
-			{contacts.map(contact => {
-				return (
-					<li key={contact.id}>{contact.name}: {contact.number}</li>
-				);
+			{filtredСontacts.map(contact => {
+				console.log(contact);
+				<ContactListItem 
+				key={contact.id}
+				contact={contact}
+				onDeleteContact={onDeleteContact}/>
 			}
 			)}
 		</ul>
-		// <ContactList/>
 	)
 	
 }
 
 ContactList.propTypes = {
-	contacts: PropTypes.array.isRequired, 
-	// filtredСontacts: PropTypes.func.isRequired,
+	filtredСontacts: PropTypes.array.isRequired, 
+	onDeleteContact: PropTypes.func.isRequired,
 };
