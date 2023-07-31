@@ -20,12 +20,14 @@ export class ContactForm extends Component {
 
 	render() {
 		return (
-			<form className={css.statstic_wrapper} onSubmit={this.handleSubmit}>
-				<label className='label'>
+			<form className={css.contact_form} onSubmit={this.handleSubmit}>
+				<div className={css.contact_form_wrapper}>
+				<label className={css.label}>
 					Name
 					<input 
 						type="text"
 						name="name"
+						className={css.input}
 						onChange={this.handleChange}
 						value={this.state.name}
 						pattern="^[a-zA-Zа-яА-Я]+(([' \-][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$"
@@ -33,11 +35,12 @@ export class ContactForm extends Component {
 						required
 					/>
 				  </label>
-				  <label className='label'>
+				  <label className={css.label}>
 					Number
 					<input
 						type="tel"
 						name="number"
+						className={css.input}
 						onChange={this.handleChange}
 						value={this.state.number}
 						pattern="\+?\d{1,4}?[ .\-\s]?\(?\d{1,3}?\)?[ .\-\s]?\d{1,4}[ .\-\s]?\d{1,4}[ .\-\s]?\d{1,9}"
@@ -45,7 +48,8 @@ export class ContactForm extends Component {
 						required
 					/>
 				  </label>
-				<button type="submit">Add contact</button>
+				</div>
+				<button type="submit" className={css.btn_submit}>Add contact</button>
 			</form>
 		);
 	}	

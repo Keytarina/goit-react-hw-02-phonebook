@@ -4,7 +4,7 @@ import { ContactListItem } from 'components/ContactListItem/ContactListItem'
 
 export const ContactList = ({ filtredСontacts, onDeleteContact }) => {
 	return (
-		<ul>
+		<ul className={css.contact_list}>
 			{filtredСontacts.map(contact => {
 				return <ContactListItem 
 				key={contact.id}

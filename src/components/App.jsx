@@ -50,12 +50,14 @@ export class App extends Component {
 
   render() {
     return (
-      <div className="App">
-        <h1 className={css.title}>Phonebook</h1>
-        <ContactForm onSubmit={this.formSubmitHandle} />
-        <h2>Contacts</h2>
-        <Filter value={this.state.filter} handleChange={this.handleChangeFilter}/>
-        <ContactList filtredСontacts={this.onFiltredСontacts()} onDeleteContact={this.onDeleteContact}/>
+      <div className={css.app}>
+        <div className={css.app_container}>
+          <h1 className={css.title}>Phonebook</h1>
+          <ContactForm onSubmit={this.formSubmitHandle} />
+          <h2 className={css.title}>Contacts</h2>
+          <Filter value={this.state.filter} handleChange={this.handleChangeFilter}/>
+          <ContactList filtredСontacts={this.onFiltredСontacts()} onDeleteContact={this.onDeleteContact}/>
+        </div>
       </div>
     )
   }
