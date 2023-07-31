@@ -6,8 +6,7 @@ export const ContactList = ({ filtredСontacts, onDeleteContact }) => {
 	return (
 		<ul>
 			{filtredСontacts.map(contact => {
-				console.log(contact);
-				<ContactListItem 
+				return <ContactListItem 
 				key={contact.id}
 				contact={contact}
 				onDeleteContact={onDeleteContact}/>
@@ -15,7 +14,6 @@ export const ContactList = ({ filtredСontacts, onDeleteContact }) => {
 			)}
 		</ul>
 	)
-	
 }
 
 ContactList.propTypes = {

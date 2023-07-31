@@ -39,19 +39,13 @@ export class App extends Component {
     this.setState({ [name]: value });
   }
 
-  filtredСontacts = () => {
+  onFiltredСontacts = () => {
     const { filter, contacts } = this.state;
-    if(filter === ''){
-      return contacts;
-    } else {
-      return contacts.filter(contact => {
-        contact.name.toLowerCase().includes(filter.toLowerCase());
-    });
-    }
+    return contacts.filter(contact => contact.name.toLowerCase().includes(filter.toLowerCase()));
   }
 
-  onDeleteContact = () => {
-    console.log("Function delete contact");
+  onDeleteContact = (id) => {
+    this.setState({contacts: this.state.contacts.filter(contact => contact.id !== id)});
   }
 
   render() {
@@ -61,7 +55,7 @@ export class App extends Component {
         <ContactForm onSubmit={this.formSubmitHandle} />
         <h2>Contacts</h2>
         <Filter value={this.state.filter} handleChange={this.handleChangeFilter}/>
-        <ContactList filtredСontacts={this.filtredСontacts()} onDeleteContact={this.onDeleteContact}/>
+        <ContactList filtredСontacts={this.onFiltredСontacts()} onDeleteContact={this.onDeleteContact}/>
       </div>
     )
   }
